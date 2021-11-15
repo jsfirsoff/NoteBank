@@ -2,10 +2,26 @@
 
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.ColumnConstraints?>
 
 
-<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="notebank.controller.Controller">
+<GridPane fx:id="grid" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" 
+xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="notebank.controller.Controller"
+alignment="CENTER" gridLinesVisible="true" GridPane.hgrow="always" GridPane.vgrow="always">
+    <rowConstraints>
+   	 <RowConstraints vgrow="always" />
+    </rowConstraints>
+    <columnConstraints>
+   	 <ColumnConstraints hgrow="always" fillWidth="true" />
+    </columnConstraints>
     <children>
-        <Label fx:id="label" text="Label" />
+      <Label fx:id="label" text="Label" GridPane.columnIndex="0" GridPane.rowIndex="0" />
+        <VBox fx:id="vbox" prefWidth="${grid.width/2}" GridPane.columnIndex="1" GridPane.rowIndex="0" GridPane.columnSpan="1">
+        	<Button fx:id="okBtn" maxWidth="${vbox.width}" onAction="#printOutput"/>
+        </VBox>
     </children>
-</StackPane>
+</GridPane>
