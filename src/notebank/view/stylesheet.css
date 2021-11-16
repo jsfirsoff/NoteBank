@@ -6,5 +6,68 @@
     -fx-text-fill: #808080;
 }
 
-.label{ -fx-text-fill: #808080;
+#title{ 
+	-fx-text-fill: #ffd700;
+	-fx-font-size: 12pt;
+	-fx-font-weight: bold;
+	-fx-font-family: "Lucida Handwriting";
+	-fx-control-inner-background: transparent;
+	-fx-background-insets: 0;
+	-fx-background-color: transparent;
+	-fx-wrap-text: true;
 }
+
+#title:focused .content {
+	-fx-background-color: transparent;
+}
+
+#title .scroll-bar:vertical {
+    -fx-opacity: 0;
+}
+
+#title:focused .scroll-bar:vertical {
+    -fx-opacity: 0;
+}
+
+#text{
+	-fx-font-size: 14pt;
+	-fx-text-fill: #dcdcdc;
+	-fx-font-family: "Lucida Handwriting";
+	-fx-control-inner-background: transparent;
+	-fx-background-insets: 0;
+	-fx-background-color: transparent;
+	-fx-wrap-text: true;
+}
+
+#text:focused .content {
+	-fx-background-color: transparent;
+}
+
+#tags{
+	-fx-font-size: 12pt;
+	-fx-text-fill: #A16583;
+	-fx-font-family: "Lucida Handwriting";
+	-fx-control-inner-background: transparent;
+	-fx-background-insets: 0;
+	-fx-background-color: transparent;
+	-fx-wrap-text: true;
+	-fx-prompt-text-fill: #8365A1;
+}
+
+#tags:focused .content {
+	-fx-background-color: transparent;
+}
+
+.tag {
+	-fx-font-size: 12pt;
+	-fx-text-fill: #A16583;
+	-fx-font-family: "Lucida Handwriting";
+	-fx-font-weight: bold;
+	-fx-background-color: #543876;
+	-fx-wrap-text: true;
+	-fx-border-radius: 10 10 10 10;
+    -fx-background-radius: 10 10 10 10;
+    -fx-padding: 0 7 0 7;
+}
+
+
