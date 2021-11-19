@@ -1,5 +1,8 @@
 package notebank.database;
-
+/**
+ * Adapted from @author Ramesh Fadatare example
+ * https://www.sourcecodeexamples.net/2019/11/jdbc-insert-multiple-rows-example.html
+ */
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -32,6 +35,7 @@ public class InsertTag {
             // print SQL exception information
             JDBCUtils.printSQLException(e);
         }
+        //return -1 if something went wrong
         return -1;
         // Step 4: try-with-resource statement will auto close the connection.
 	}

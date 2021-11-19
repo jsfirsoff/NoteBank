@@ -1,5 +1,8 @@
 package notebank.database;
-
+/**
+ * Adapted from @author Ramesh Fadatare example
+ * https://www.javaguides.net/2018/10/jdbc-statement-update-record-example.html
+ */
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
@@ -32,8 +35,7 @@ public class UpdateNote {
             // print SQL exception information
             JDBCUtils.printSQLException(e);
         }
-// how do tags fit in?
-        // Step 4: try-with-resource statement will auto close the connection.
+        
     }
 
 }

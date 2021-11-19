@@ -31,6 +31,10 @@ public class SearchNotesByStringTest {
 	static String searchstring = "Test";
 	static String searchstring2 = "HELLO";
 	static String searchstring3 = "";
+	static String searchstring4 = "test hello";
+	static String searchstring5 = "'test hello'";
+	static String searchstring6 = "\"test hello\"";
+	static String searchstring7 = "'sup dude'";
 	
 	@ClassRule
 	public static TemporaryFolder tFolder = new TemporaryFolder();
@@ -60,7 +64,7 @@ public class SearchNotesByStringTest {
 		noteTagInserter.insertNoteTag(noteid, tagid);
 		
 		file = tFolder.newFile("aFile");  //filename = title
-		FileUtility.writeToFile(file, "hi");
+		FileUtility.writeToFile(file, "hi. sup dude?");
 		file.deleteOnExit();
 		
 		path = file.getAbsolutePath();
@@ -79,6 +83,16 @@ public class SearchNotesByStringTest {
 		noteid = noteInserter.insertNote("anotherFile", path, true);
 		
 		noteTagInserter.insertNoteTag(noteid, tagid);
+		noteTagInserter.insertNoteTag(noteid, tagid2);
+		
+		file = tFolder.newFile("yetanotherfile");  //filename = title
+		FileUtility.writeToFile(file, "test hello.");
+		file.deleteOnExit();
+		
+		path = file.getAbsolutePath();
+		
+		noteid = noteInserter.insertNote("yetanotherfile", path, true);
+		
 		noteTagInserter.insertNoteTag(noteid, tagid2);
 	}
 
@@ -100,9 +114,29 @@ public class SearchNotesByStringTest {
 		NoteSearch search = new NoteSearch(new SearchNotesByString(searchstring));
 		ArrayList<Note> notes = search.getNotes(new FindNotes());
 		
-		assertEquals(2, notes.size());
+		assertEquals(3, notes.size());
 		
 		search = new NoteSearch(new SearchNotesByString(searchstring2));
+		notes = search.getNotes(new FindNotes());
+		
+		assertEquals(2, notes.size());
+		
+		search = new NoteSearch(new SearchNotesByString(searchstring4));
+		notes = search.getNotes(new FindNotes());
+		
+		assertEquals(3, notes.size());
+		
+		search = new NoteSearch(new SearchNotesByString(searchstring5));
+		notes = search.getNotes(new FindNotes());
+		
+		assertEquals(1, notes.size());
+		
+		search = new NoteSearch(new SearchNotesByString(searchstring6));
+		notes = search.getNotes(new FindNotes());
+		
+		assertEquals(1, notes.size());
+		
+		search = new NoteSearch(new SearchNotesByString(searchstring7));
 		notes = search.getNotes(new FindNotes());
 		
 		assertEquals(1, notes.size());

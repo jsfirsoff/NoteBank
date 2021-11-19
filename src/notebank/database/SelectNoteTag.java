@@ -1,5 +1,8 @@
 package notebank.database;
-
+/**
+ * Adapted from @author Ramesh Fadatare example
+ * https://www.sourcecodeexamples.net/2019/11/jdbc-select-query-example.html
+ */
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -16,8 +19,7 @@ public class SelectNoteTag {
 	private SelectNote noteSelector = new SelectNote();
 
 	public ArrayList<Tag> selectTagsByNote(int noteId) {
-		// using try-with-resources to avoid closing resources (boiler plate code)
-
+		
         // Step 1: Establishing a Connection
         try (Connection connection = JDBCUtils.getConnection();
 
@@ -34,7 +36,7 @@ public class SelectNoteTag {
             	int tagid = rs.getInt("TAGID"); 
             	
             	Tag tag = tagSelector.selectTag(tagid); //may have to change this to include list of notes
-            	//tag.setNotes(selectNotesByTag(tagid));
+
             	tags.add(tag); 
             }
             return tags;
@@ -42,13 +44,11 @@ public class SelectNoteTag {
         } catch (SQLException e) {
             JDBCUtils.printSQLException(e);
         }
-        // Step 4: try-with-resource statement will auto close the connection.
+        
         return null;
 	}
-	// may have to implement multiple methods here to address various search types...return lists etc
-	//decorator pattern for search methods?
+
 	public ArrayList<Note> selectNotesByTag(int tagId) {
-		// using try-with-resources to avoid closing resources (boiler plate code)
 
         // Step 1: Establishing a Connection
         try (Connection connection = JDBCUtils.getConnection();
@@ -66,14 +66,14 @@ public class SelectNoteTag {
             	int noteid = rs.getInt("NOTEID"); 
             	
             	Note note = noteSelector.selectNote(noteid);
-            	notes.add(note); // don't need to fill tags list here? - > actually yes we do      	
+            	notes.add(note); // don't need to fill tags list here? - > actually yes we do  ?    	
             }
             return notes;
             
         } catch (SQLException e) {
             JDBCUtils.printSQLException(e);
         }
-        // Step 4: try-with-resource statement will auto close the connection.
+        
         return null;
 	}
 }

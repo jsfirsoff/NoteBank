@@ -1,5 +1,8 @@
 package notebank.database;
-
+/**
+ * Adapted from @author Ramesh Fadatare example
+ * https://www.sourcecodeexamples.net/2019/11/jdbc-select-query-example.html
+ */
 import java.sql.Connection;
 import java.sql.Date;
 import java.sql.PreparedStatement;
@@ -15,8 +18,6 @@ public class SelectNote {
 	private static final String QUERY_ALL = "SELECT * FROM notes";
 
 	public Note selectNote(int targetId) {
-		// using try-with-resources to avoid closing resources (boiler plate code)
-
         // Step 1: Establishing a Connection
         try (Connection connection = JDBCUtils.getConnection();
 
@@ -31,7 +32,7 @@ public class SelectNote {
             rs.next();
             int id = rs.getInt("NOTEID");
             String title = rs.getString("TITLE");
-            String text = rs.getString("TEXT"); // convert clob to string? ... why is this clob different?
+            String text = rs.getString("TEXT");
             boolean pin = rs.getBoolean("PIN");
             Date date = rs.getDate("DATE");
             
@@ -45,13 +46,12 @@ public class SelectNote {
         } catch (SQLException e) {
             JDBCUtils.printSQLException(e);
         }
-        // Step 4: try-with-resource statement will auto close the connection.
+
         return null;
 	}
-	// may have to implement multiple methods here to address various search types...return lists etc
-	//decorator pattern for search methods?
+
 	public ArrayList<Note> selectAllNotes() {
-		// using try-with-resources to avoid closing resources (boiler plate code)
+	
 		ArrayList<Note> notes = new ArrayList<Note>();
         // Step 1: Establishing a Connection
         try (Connection connection = JDBCUtils.getConnection();
@@ -66,7 +66,7 @@ public class SelectNote {
             while (rs.next()) {
             	int id = rs.getInt("NOTEID");
             	String title = rs.getString("TITLE");
-            	String text = rs.getString("TEXT"); // convert clob to string? ... why is this clob different?
+            	String text = rs.getString("TEXT");
             	boolean pin = rs.getBoolean("PIN");
             	Date date = rs.getDate("DATE");
 
@@ -82,7 +82,7 @@ public class SelectNote {
         } catch (SQLException e) {
             JDBCUtils.printSQLException(e);
         }
-        // Step 4: try-with-resource statement will auto close the connection.
+ 
         return null;
 	}
 }

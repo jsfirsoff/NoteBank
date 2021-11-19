@@ -1,5 +1,8 @@
 package notebank.database;
-
+/**
+ * Adapted from @author Ramesh Fadatare example
+ * https://www.sourcecodeexamples.net/2019/11/jdbc-select-query-example.html
+ */
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -14,7 +17,6 @@ public class SelectTag {
 	private static final String QUERY_ALL = "SELECT * FROM tags";
 	
 	public Tag selectTag(int targetId) {
-		// using try-with-resources to avoid closing resources (boiler plate code)
 
         // Step 1: Establishing a Connection
         try (Connection connection = JDBCUtils.getConnection();
@@ -31,20 +33,19 @@ public class SelectTag {
             int id = rs.getInt("TAGID");
             String name = rs.getString("NAME");
  
-            Tag tag = new Tag(id, name); //, null); //until xover implementation .. or keep null? and let nts handle it?
+            Tag tag = new Tag(id, name);  //until xover implementation .. or keep null? and let nts handle it?
                System.out.println(id + "," + name);
             return tag;
             
         } catch (SQLException e) {
             JDBCUtils.printSQLException(e);
         }
-        // Step 4: try-with-resource statement will auto close the connection.
+      
         return null;
 	}
-	// may have to implement multiple methods here to address various search types...return lists etc
-	//decorator pattern for search methods?
+
 	public ArrayList<Tag> selectAllTags() {
-		// using try-with-resources to avoid closing resources (boiler plate code)
+		
 		ArrayList<Tag> tags = new ArrayList<Tag>();
         // Step 1: Establishing a Connection
         try (Connection connection = JDBCUtils.getConnection();
@@ -60,7 +61,7 @@ public class SelectTag {
             	int id = rs.getInt("TAGID");
             	String name = rs.getString("NAME");
 
-            	Tag tag = new Tag(id, name); //, null); //until xover implementation .. or keep null? and let nts handle it?
+            	Tag tag = new Tag(id, name);  //until xover implementation .. or keep null? and let nts handle it?
             	System.out.println(id + "," + name);
             	tags.add(tag);
             }
@@ -69,7 +70,7 @@ public class SelectTag {
         } catch (SQLException e) {
             JDBCUtils.printSQLException(e);
         }
-        // Step 4: try-with-resource statement will auto close the connection.
+       
         return null;
 	}
 }

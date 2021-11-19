@@ -11,7 +11,7 @@ public class SearchNotesById implements SearchNotes {
 	}
 
 	@Override
-	public ArrayList<Note> getNotes(FindNotes noteFinder) { //may be bettr just to call method in selectnote class
+	public ArrayList<Note> getNotes(FindNotes noteFinder) {
 		ArrayList<Note> notes = new ArrayList<Note>();
 		for (Note note : noteFinder.getAllNotes()) {
 			if (note.getId() == id) {

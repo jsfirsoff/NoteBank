@@ -1,5 +1,8 @@
 package notebank.database;
-
+/**
+ * From @author Ramesh Fadatare example
+ * https://www.sourcecodeexamples.net/2019/11/java-jdbc-connection-to-hsqldb-database.html
+ */
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
@@ -15,7 +18,6 @@ public class JDBCUtils {
         try {
             connection = DriverManager.getConnection(jdbcURL, jdbcUsername, jdbcPassword);
         } catch (SQLException e) {
-            // TODO Auto-generated catch block
         	e.printStackTrace();
         }
         return connection;

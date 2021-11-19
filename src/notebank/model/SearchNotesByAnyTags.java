@@ -2,7 +2,7 @@ package notebank.model;
 
 import java.util.ArrayList;
 // include all tags or any tags
-// use selectnotetag class instead?
+
 public class SearchNotesByAnyTags implements SearchNotes {
 	
 	private ArrayList<String> tags;

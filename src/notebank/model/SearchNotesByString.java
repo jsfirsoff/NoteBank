@@ -7,6 +7,7 @@ import java.util.regex.Pattern;
 // from title or text
 // check each word separately unless in quotes?
 //what about matching within a word?
+
 public class SearchNotesByString implements SearchNotes {
 	
 	private String searchString;
@@ -17,30 +18,32 @@ public class SearchNotesByString implements SearchNotes {
 
 	@Override
 	public ArrayList<Note> getNotes(FindNotes noteFinder) {
-		//String[] dividedStrings;
+
 		ArrayList<String> dividedStrings = new ArrayList<String>();
 		ArrayList<String> literalStrings = new ArrayList<String>();
-		//ArrayList<Pair<Integer, Integer>> literalIndices = new ArrayList<Pair<Integer, Integer>>();
 		
+
+		//list search terms between quotations
 		Pattern p = Pattern.compile("(\'([^\']*)\')|(\"([^\"]*)\")");
 		Matcher m = p.matcher(searchString);
 		
 		while (m.find()) {
-			//literalIndices.
 			String s = searchString.substring(m.start(), m.end());
-			if (!s.isBlank()) literalStrings.add(s); //check for empties
+			if (!s.isBlank()) literalStrings.add(s.substring(1, s.length()-2)); //check for empties and remove quotes
 			searchString = searchString.replace(s, "");
 		}
-		dividedStrings = new ArrayList<String>(Arrays.asList(searchString.split(" ")));
+		
+		//list separate each word in search term
+		if (!searchString.isBlank()) dividedStrings = new ArrayList<String>(Arrays.asList(searchString.split(" ")));
 		
 		ArrayList<Note> allNotes = noteFinder.getAllNotes();
 		ArrayList<Note> notes = new ArrayList<Note>();
 		
 		for (Note note : allNotes) {
-		//	boolean found = false;
+	
 			String title = note.getTitle().toLowerCase();
 			String text = note.getText().toLowerCase();
-			
+			//find matches in title or text from literal or divided lists
 			if (findMatch(literalStrings, title) ||
 					findMatch(dividedStrings, title) ||
 					findMatch(literalStrings, text) ||
@@ -48,16 +51,6 @@ public class SearchNotesByString implements SearchNotes {
 				notes.add(note);
 			}
 			
-			/*
-			 * for (String word : literalStrings) { if(title.indexOf(word) > -1) {
-			 * notes.add(note); found = true; break; } } if (found) continue; for (String
-			 * word : dividedStrings) { if (title.indexOf(word) > -1) { notes.add(note);
-			 * found = true; break; } } if (found) continue; for (String word :
-			 * literalStrings) { if(text.indexOf(word) > -1) { notes.add(note); found =
-			 * true; break; } } if (found) continue; for (String word : dividedStrings) { if
-			 * (title.indexOf(word) > -1) { notes.add(note); found = true; break; } }
-			 */
-
 		}
 		return notes;
 	}

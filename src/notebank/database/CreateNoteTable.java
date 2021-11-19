@@ -1,11 +1,14 @@
 package notebank.database;
-
+/**
+ * Adapted from @author Ramesh Fadatare example
+ * https://www.sourcecodeexamples.net/2019/11/java-jdbc-connection-to-hsqldb-database.html
+ */
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.sql.Statement;
 
 public class CreateNoteTable {
-	// go over this
+	
 	private static final String createTableSQL = "CREATE TABLE Notes (\r\n" + 
 			"  NoteID  INT(255) UNSIGNED PRIMARY KEY AUTO_INCREMENT,\r\n" +
 	        "  Title VARCHAR(100),\r\n" + "  Text CLOB,\r\n" +

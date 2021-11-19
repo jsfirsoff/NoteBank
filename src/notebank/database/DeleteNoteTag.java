@@ -1,5 +1,8 @@
 package notebank.database;
-
+/**
+ * Adapted from @author Ramesh Fadatare example
+ * https://www.sourcecodeexamples.net/2019/11/jdbc-delete-query-example.html
+ */
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
@@ -9,7 +12,6 @@ public class DeleteNoteTag {
 	private static final String TAG_QUERY = "DELETE FROM notetags WHERE tagid =? AND noteid =?";
 
 	public void deleteNoteAndTags(int noteId) {
-		// using try-with-resources to avoid closing resources (boiler plate code)
 
         // Step 1: Establishing a Connection
         try (Connection connection = JDBCUtils.getConnection();
@@ -26,11 +28,9 @@ public class DeleteNoteTag {
         }
         // Step 4: try-with-resource statement will auto close the connection.
 	}
-	// may have to implement multiple methods here to address various search types...return lists etc
-	//decorator pattern for search methods?
-	public void deleteOneNoteTag(int noteId, int tagId) {
-		// using try-with-resources to avoid closing resources (boiler plate code)
 
+	public void deleteOneNoteTag(int noteId, int tagId) {
+		
         // Step 1: Establishing a Connection
         try (Connection connection = JDBCUtils.getConnection();
 

@@ -13,7 +13,7 @@ public class SearchNotesByDate implements SearchNotes {
 	
 	
 	@Override
-	public ArrayList<Note> getNotes(FindNotes noteFinder) {  //may be better to make method in selectnoteclass
+	public ArrayList<Note> getNotes(FindNotes noteFinder) { 
 		ArrayList<Note> notes = new ArrayList<Note>();
 		for (Note note : noteFinder.getAllNotes()) {
 			if (note.getDate().equals(date)) {

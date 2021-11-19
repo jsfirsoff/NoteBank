@@ -18,7 +18,7 @@ public class FileUtility {
 		} // better error handling here
 		return fReader;
 	}
-	//limit title/filename to 100chars
+	//limit title/filename to 100chars?
 	public static void saveFile() {
 		//TODO
 		//save file to computer before adding to database

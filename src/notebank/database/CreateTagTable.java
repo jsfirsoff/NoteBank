@@ -1,5 +1,8 @@
 package notebank.database;
-
+/**
+ * Adapted from @author Ramesh Fadatare example
+ * https://www.sourcecodeexamples.net/2019/11/java-jdbc-connection-to-hsqldb-database.html
+ */
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.sql.Statement;
