@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import notebank.model.Note;
-import notebank.model.NoteSort;
+import notebank.model.SortNotes;
 import notebank.model.SortByDateNewest;
 
 public class SortByDateNewestTest {
@@ -24,7 +24,7 @@ public class SortByDateNewestTest {
 
 	@Test
 	public void test() {
-		NoteSort sort = new NoteSort(new SortByDateNewest());
+		SortNotes sort = new SortNotes(new SortByDateNewest());
 		
 		ArrayList<Note> sortedNotes = sort.sortNotes(notes);
 		

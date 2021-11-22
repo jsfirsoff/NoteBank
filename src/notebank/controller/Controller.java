@@ -5,6 +5,7 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 
 import javafx.event.ActionEvent;
+import javafx.event.Event;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -68,15 +69,30 @@ public class Controller {
     	String text = tags.getText();
     	System.out.println("new tag: " + text);
     	createTag(text);
+    	
+    	//add to database with separate database service class?
+    	
     	tags.clear();
     }
     
     private void createTag(String text) throws FileNotFoundException {
-    	//todo: create tag
+
     	Label label = new Label(text);
     	label.getStyleClass().add("tag");
     	
-    	label.setGraphic(resize(createIcon(exitIconPath), 15));
+    	label.setOnMouseClicked(new EventHandler<MouseEvent>() {
+
+			@Override
+			public void handle(MouseEvent event) {
+				System.out.println("tag selected");
+				
+				//search for selected tag
+			}
+    		
+    	});
+    	
+    	
+    	label.setGraphic(createButton(exitIconPath, label));
     	
     	label.setContentDisplay(ContentDisplay.RIGHT);
     	
@@ -84,32 +100,36 @@ public class Controller {
     	tagBox.getChildren().add(len-1, label);
     }
     
-    private ImageView createIcon(String path) throws FileNotFoundException {
-    	Image image = new Image(new FileInputStream(new File(System.getProperty("user.dir"), path)));
-    	
-    	ImageView icon = new ImageView(image);
-    	
-    	icon.setOnMouseClicked(new EventHandler<MouseEvent>() {
-    		@Override
-            public void handle(MouseEvent arg0) {
-              
-    			FlowPane pane = (FlowPane) icon.getParent();
-    			
-    			pane.getChildren().remove(icon);
-    			System.out.println("clicked");
-    			//not working
-             // Label label =(Label) icon.getParent();
-              
-            }
-    	});
-    	
-    	return icon;
-    }
-    
     private ImageView resize(ImageView image, double size) {
     	image.setPreserveRatio(true);
     	image.setFitHeight(size);
     	
     	return image;
+    }
+    
+    private Button createButton(String path, Label label) throws FileNotFoundException {
+    	Image image = new Image(new FileInputStream(new File(System.getProperty("user.dir"), path)));
+    	
+    	ImageView icon = new ImageView(image);
+    	
+    	
+    	Button button = new Button();
+    	button.setGraphic(resize(icon, 15));
+    	
+    	button.setId("tagDelBtn");
+    	
+    	button.setOnAction(new EventHandler<ActionEvent>() {
+    		@Override
+            public void handle(ActionEvent event) {
+    			
+    			tagBox.getChildren().remove(label);
+    			
+    			System.out.println("clicked");
+    			
+    			//remove tag from database
+            }
+    	});
+    	
+    	return button;
     }
 }

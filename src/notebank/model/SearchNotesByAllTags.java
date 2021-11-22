@@ -2,7 +2,7 @@ package notebank.model;
 
 import java.util.ArrayList;
 
-public class SearchNotesByAllTags implements SearchNotes {
+public class SearchNotesByAllTags implements ISearchNotes {
 	
 	private ArrayList<String> tags;
 	

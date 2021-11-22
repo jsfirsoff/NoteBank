@@ -21,7 +21,7 @@ import notebank.database.InsertTag;
 import notebank.database.JDBCUtils;
 import notebank.model.FindNotes;
 import notebank.model.Note;
-import notebank.model.NoteSearch;
+import notebank.model.SearchNotes;
 import notebank.model.SearchNotesByAnyTags;
 import notebank.tools.FileUtility;
 
@@ -98,7 +98,7 @@ public class SearchNotesByAnyTagsTest {
 
 	@Test
 	public void test() {
-		NoteSearch search = new NoteSearch(new SearchNotesByAnyTags(searchtags));
+		SearchNotes search = new SearchNotes(new SearchNotesByAnyTags(searchtags));
 		ArrayList<Note> notes = search.getNotes(new FindNotes());
 		
 		assertEquals(2, notes.size());

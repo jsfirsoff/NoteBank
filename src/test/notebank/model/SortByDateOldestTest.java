@@ -9,7 +9,7 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 
 import notebank.model.Note;
-import notebank.model.NoteSort;
+import notebank.model.SortNotes;
 import notebank.model.SortByDateOldest;
 
 public class SortByDateOldestTest {
@@ -25,7 +25,7 @@ public class SortByDateOldestTest {
 
 	@Test
 	public void test() {
-		NoteSort sort = new NoteSort(new SortByDateOldest());
+		SortNotes sort = new SortNotes(new SortByDateOldest());
 		
 		ArrayList<Note> sortedNotes = sort.sortNotes(notes);
 		

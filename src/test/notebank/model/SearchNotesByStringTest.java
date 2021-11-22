@@ -22,7 +22,7 @@ import notebank.database.InsertTag;
 import notebank.database.JDBCUtils;
 import notebank.model.FindNotes;
 import notebank.model.Note;
-import notebank.model.NoteSearch;
+import notebank.model.SearchNotes;
 import notebank.model.SearchNotesByString;
 import notebank.tools.FileUtility;
 
@@ -111,32 +111,32 @@ public class SearchNotesByStringTest {
 
 	@Test
 	public void test() {
-		NoteSearch search = new NoteSearch(new SearchNotesByString(searchstring));
+		SearchNotes search = new SearchNotes(new SearchNotesByString(searchstring));
 		ArrayList<Note> notes = search.getNotes(new FindNotes());
 		
 		assertEquals(3, notes.size());
 		
-		search = new NoteSearch(new SearchNotesByString(searchstring2));
+		search = new SearchNotes(new SearchNotesByString(searchstring2));
 		notes = search.getNotes(new FindNotes());
 		
 		assertEquals(2, notes.size());
 		
-		search = new NoteSearch(new SearchNotesByString(searchstring4));
+		search = new SearchNotes(new SearchNotesByString(searchstring4));
 		notes = search.getNotes(new FindNotes());
 		
 		assertEquals(3, notes.size());
 		
-		search = new NoteSearch(new SearchNotesByString(searchstring5));
+		search = new SearchNotes(new SearchNotesByString(searchstring5));
 		notes = search.getNotes(new FindNotes());
 		
 		assertEquals(1, notes.size());
 		
-		search = new NoteSearch(new SearchNotesByString(searchstring6));
+		search = new SearchNotes(new SearchNotesByString(searchstring6));
 		notes = search.getNotes(new FindNotes());
 		
 		assertEquals(1, notes.size());
 		
-		search = new NoteSearch(new SearchNotesByString(searchstring7));
+		search = new SearchNotes(new SearchNotesByString(searchstring7));
 		notes = search.getNotes(new FindNotes());
 		
 		assertEquals(1, notes.size());

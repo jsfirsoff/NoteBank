@@ -3,7 +3,7 @@ package notebank.model;
 import java.sql.Date;
 import java.util.ArrayList;
 
-public class SearchNotesByDate implements SearchNotes {
+public class SearchNotesByDate implements ISearchNotes {
 
 	private Date date;
 	

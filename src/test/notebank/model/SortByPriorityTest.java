@@ -9,7 +9,7 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 
 import notebank.model.Note;
-import notebank.model.NoteSort;
+import notebank.model.SortNotes;
 import notebank.model.SortByPriority;
 
 public class SortByPriorityTest {
@@ -26,7 +26,7 @@ public class SortByPriorityTest {
 
 	@Test
 	public void test() {
-		NoteSort sort = new NoteSort(new SortByPriority());
+		SortNotes sort = new SortNotes(new SortByPriority());
 		
 		ArrayList<Note> sortedNotes = sort.sortNotes(notes);
 		

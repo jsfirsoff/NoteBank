@@ -3,7 +3,7 @@ package notebank.model;
 import java.util.ArrayList;
 import java.util.Comparator;
 
-public class SortByDateOldest implements SortNotes {
+public class SortByDateOldest implements ISortNotes {
 	
 	public SortByDateOldest() {}
 

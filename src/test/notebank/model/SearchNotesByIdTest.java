@@ -22,7 +22,7 @@ import notebank.database.InsertTag;
 import notebank.database.JDBCUtils;
 import notebank.model.FindNotes;
 import notebank.model.Note;
-import notebank.model.NoteSearch;
+import notebank.model.SearchNotes;
 import notebank.model.SearchNotesById;
 import notebank.tools.FileUtility;
 
@@ -73,7 +73,7 @@ public class SearchNotesByIdTest {
 
 	@Test
 	public void test() {
-		NoteSearch search = new NoteSearch(new SearchNotesById(noteid));
+		SearchNotes search = new SearchNotes(new SearchNotesById(noteid));
 		ArrayList<Note> notes = search.getNotes(new FindNotes());
 		
 		assertFalse(notes.isEmpty());

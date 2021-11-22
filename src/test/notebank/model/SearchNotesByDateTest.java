@@ -23,7 +23,7 @@ import notebank.database.InsertTag;
 import notebank.database.JDBCUtils;
 import notebank.model.FindNotes;
 import notebank.model.Note;
-import notebank.model.NoteSearch;
+import notebank.model.SearchNotes;
 import notebank.model.SearchNotesByDate;
 import notebank.tools.FileUtility;
 
@@ -75,12 +75,12 @@ public class SearchNotesByDateTest {
 	@Test
 	public void test() {
 		
-		NoteSearch search = new NoteSearch(new SearchNotesByDate(Date.valueOf(LocalDate.now())));
+		SearchNotes search = new SearchNotes(new SearchNotesByDate(Date.valueOf(LocalDate.now())));
 		ArrayList<Note> notes = search.getNotes(new FindNotes());
 		
 		assertEquals(1, notes.size());
 		
-		search = new NoteSearch(new SearchNotesByDate(Date.valueOf(LocalDate.of(2000, 12, 11))));
+		search = new SearchNotes(new SearchNotesByDate(Date.valueOf(LocalDate.of(2000, 12, 11))));
 		notes = search.getNotes(new FindNotes());
 		
 		assertTrue(notes.isEmpty());

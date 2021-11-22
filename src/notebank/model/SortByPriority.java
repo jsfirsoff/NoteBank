@@ -3,7 +3,7 @@ package notebank.model;
 import java.util.ArrayList;
 import java.util.Comparator;
 
-public class SortByPriority implements SortNotes {
+public class SortByPriority implements ISortNotes {
 	
 	public SortByPriority() {}
 

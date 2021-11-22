@@ -2,7 +2,7 @@ package notebank.model;
 
 import java.util.ArrayList;
 // should only return 1
-public class SearchNotesById implements SearchNotes {
+public class SearchNotesById implements ISearchNotes {
 	
 	private int id;
 	

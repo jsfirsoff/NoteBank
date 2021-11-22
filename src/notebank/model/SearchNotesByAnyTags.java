@@ -3,7 +3,7 @@ package notebank.model;
 import java.util.ArrayList;
 // include all tags or any tags
 
-public class SearchNotesByAnyTags implements SearchNotes {
+public class SearchNotesByAnyTags implements ISearchNotes {
 	
 	private ArrayList<String> tags;
 	

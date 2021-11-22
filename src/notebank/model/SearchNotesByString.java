@@ -8,7 +8,7 @@ import java.util.regex.Pattern;
 // check each word separately unless in quotes?
 //what about matching within a word?
 
-public class SearchNotesByString implements SearchNotes {
+public class SearchNotesByString implements ISearchNotes {
 	
 	private String searchString;
 	
