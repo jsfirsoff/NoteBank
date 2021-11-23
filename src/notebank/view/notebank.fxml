@@ -24,8 +24,8 @@ alignment="CENTER" gridLinesVisible="true" GridPane.hgrow="always" GridPane.vgro
     </columnConstraints>
     <children>
     <VBox fx:id="vbox1" prefWidth="${grid.width/2}" GridPane.columnIndex="0" GridPane.rowIndex="0" GridPane.columnSpan="1" spacing="10" >
-       <TextArea fx:id="title" text="Titlel" prefHeight="24" prefRowCount="2" />
-       <TextArea fx:id="text" VBox.vgrow="ALWAYS" />
+       <TextArea fx:id="title" prefHeight="24" prefRowCount="2" promptText="Untitled" />
+       <TextArea fx:id="text" VBox.vgrow="ALWAYS" promptText="What's on your mind?" />
        <ScrollPane fx:id="tagscroll" fitToWidth="true" prefHeight="30.0">
        <FlowPane fx:id="tagBox" alignment="BOTTOM_LEFT" hgap="5" vgap="3" >
          <TextField fx:id="tags" promptText="Tags" onAction="#onEnter" />

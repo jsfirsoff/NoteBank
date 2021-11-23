@@ -5,7 +5,6 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 
 import javafx.event.ActionEvent;
-import javafx.event.Event;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -17,8 +16,6 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.FlowPane;
-import javafx.scene.layout.HBox;
-import javafx.scene.text.Text;
 
 public class Controller {
 
@@ -40,8 +37,6 @@ public class Controller {
     private String exitIconPath = "/src/notebank/view/media/exit3.png";
 
     public void initialize() {
-        title.setText("Title here");
-        text.setText("note here");
     }
      
     @FXML

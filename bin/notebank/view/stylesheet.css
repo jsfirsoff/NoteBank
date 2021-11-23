@@ -15,6 +15,7 @@
 	-fx-background-insets: 0;
 	-fx-background-color: transparent;
 	-fx-wrap-text: true;
+	-fx-prompt-text-fill: rgb(225, 215, 0, 0.7);
 }
 
 #title:focused .content {
@@ -29,6 +30,7 @@
 	-fx-background-insets: 0;
 	-fx-background-color: transparent;
 	-fx-wrap-text: true;
+	-fx-prompt-text-fill: rgb(220, 220, 220, 0.5);
 }
 
 #text:focused .content {
@@ -45,7 +47,7 @@
 	-fx-background-insets: 0;
 	-fx-background-color: transparent;
 	-fx-wrap-text: true;
-	-fx-prompt-text-fill: #8365A1;
+	-fx-prompt-text-fill: rgb(162, 129, 196, 0.7);
 }
 
 #tags:focused .content {
