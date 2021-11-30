@@ -4,6 +4,8 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 
+import javafx.animation.ParallelTransition;
+import javafx.animation.TranslateTransition;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -16,9 +18,15 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.FlowPane;
+import javafx.scene.layout.GridPane;
+import javafx.scene.layout.VBox;
+import javafx.util.Duration;
 
 public class Controller {
 
+	@FXML
+	private GridPane grid;
+	
     @FXML
     private TextArea title;
     
@@ -34,9 +42,17 @@ public class Controller {
     @FXML
     private FlowPane tagBox;
     
+    @FXML
+    private VBox vbox2;
+  
+    private final double SEARCH_MENU_COLLAPSED = 1000;
+    
+    private final double SEARCH_MENU_EXPANDED = 0;
+    
     private String exitIconPath = "/src/notebank/view/media/exit3.png";
 
     public void initialize() {
+    	toggleSearchMenu(SEARCH_MENU_COLLAPSED);
     }
      
     @FXML
@@ -46,17 +62,39 @@ public class Controller {
     }
     
     @FXML
-    private void toggleSearch() 
+    private void toggleSearch(ActionEvent event) 
     {
-        System.out.println("Toggle Search");
-        String btntext = toggleBtn.getText();
+        toggleSearchIcon();
         
-        if (btntext.equals(">")) {
-        	toggleBtn.setText("<");
+        
+        
+        //refactor
+    }
+    
+    private void toggleSearchIcon() {
+    	
+    	String btntext = toggleBtn.getText();
+        
+        if (btntext.equals("<")) {
+        	toggleBtn.setText(">");
+        	toggleSearchMenu(SEARCH_MENU_EXPANDED); //refactor this out
         }
         else {
-        	toggleBtn.setText(">");
+        	toggleBtn.setText("<");
+        	toggleSearchMenu(SEARCH_MENU_COLLAPSED); //refactor this out
         }
+    }
+    
+    //do this better?
+    private void toggleSearchMenu(double position) {
+    	TranslateTransition translate = new TranslateTransition(Duration.millis(500), vbox2);  
+    	translate.setToX(position);  
+        translate.setCycleCount(1);  
+        translate.setAutoReverse(true);  
+        
+        ParallelTransition animations = new ParallelTransition(translate);
+    	
+        animations.play();
     }
     
     @FXML

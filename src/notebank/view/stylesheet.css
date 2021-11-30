@@ -97,3 +97,11 @@
 .scroll-bar:vertical {
 	-fx-opacity: 0;
 }
+
+/* search toggling */
+
+
+#vbox2 {
+	-fx-background: transparent;
+	
+}
