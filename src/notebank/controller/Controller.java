@@ -44,6 +44,9 @@ public class Controller {
     
     @FXML
     private VBox vbox2;
+    
+    @FXML
+    private Button searchTag;
   
     private final double SEARCH_MENU_COLLAPSED = 1000;
     
@@ -164,5 +167,10 @@ public class Controller {
     	});
     	
     	return button;
+    }
+    
+    private void selectSearchTag() {
+    	//change colour and set search terms
+    	//separate search controller
     }
 }

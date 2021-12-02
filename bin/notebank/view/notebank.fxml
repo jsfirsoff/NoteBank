@@ -3,6 +3,7 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.FlowPane?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.Button?>
@@ -11,6 +12,7 @@
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.*?>
 
 
 <GridPane fx:id="grid" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" 
@@ -33,8 +35,23 @@ alignment="CENTER" gridLinesVisible="true" GridPane.hgrow="always" GridPane.vgro
        </ScrollPane>
     </VBox> 
     <Button fx:id="toggleBtn" maxWidth="10" onAction="#toggleSearch" GridPane.columnIndex="1" GridPane.rowIndex="0" GridPane.columnSpan="1" >&lt;</Button>
-    <VBox fx:id="vbox2" prefWidth="${grid.width/2}" GridPane.columnIndex="2" GridPane.rowIndex="0" GridPane.columnSpan="1" spacing="10" alignment="CENTER">
-       <Button fx:id="okBtn" maxWidth="${vbox2.width/2}" onAction="#printOutput" />
+    <VBox fx:id="vbox2" prefWidth="${grid.width/2}" GridPane.columnIndex="2" GridPane.rowIndex="0" GridPane.columnSpan="1" spacing="10" alignment="BASELINE_CENTER">
+       <HBox fx:id="search" alignment="BASELINE_CENTER" maxWidth="Infinity" spacing="5">
+       	<TextField fx:id="searchTerm" promptText="Whatcha lookin' for?" maxWidth="Infinity" HBox.hgrow="ALWAYS"/>
+       	<fx:define>
+       		<Image fx:id="searchIcon" url="@media/searcharrow.png" requestedHeight="30" requestedWidth="30"/>
+       	</fx:define>
+       	<Button fx:id="searchBtn" onAction="#printOutput" >
+       		<graphic>
+       			<ImageView image="$searchIcon" preserveRatio="true"/>
+       		</graphic>
+       	</Button>
+       </HBox>
+       <FlowPane fx:id="searchTerms" hgap="5" vgap="3" >
+       	<Button fx:id="searchTag" onAction="#printOutput" >Title</Button>
+       	<Button fx:id="searchTag" onAction="#printOutput" >Note</Button>
+       	<Button fx:id="searchTag" onAction="#printOutput" >Tag</Button>
+       </FlowPane>
     </VBox>
     </children>
 </GridPane>
