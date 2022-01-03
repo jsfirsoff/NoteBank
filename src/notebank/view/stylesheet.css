@@ -130,7 +130,7 @@
 	 -fx-background-color: black;
 }
 
-#searchTag {
+#searchTag, #searchNote, #searchTitle {
 	-fx-font-size: 12pt;
 	-fx-text-fill: #A16583;
 	-fx-font-family: "Lucida Handwriting";
@@ -138,10 +138,19 @@
 	-fx-background-color: #543876;
 	-fx-wrap-text: true;
 	-fx-border-radius: 10 10 10 10;
+	-fx-border-color: #543876; 
+	-fx-border-width: 2 2 2 2;
     -fx-background-radius: 10 10 10 10;
-    -fx-padding: 0 7 0 7;
+    -fx-padding: 0 5 0 5;
 }
 
-#searchTag:hover {
+#searchTag:hover, #searchNote:hover, #searchTitle:hover {
 	-fx-background-color: #2d26d9;
+	-fx-border-color: #2d26d9;
+}
+
+#searchTag:selected, #searchNote:selected, #searchTitle:selected {
+	-fx-background-color: #2d26d9;
+	-fx-border-color: #543876;
+
 }

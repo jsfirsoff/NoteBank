@@ -13,6 +13,7 @@
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.*?>
+<?import javafx.scene.control.ToggleButton?>
 
 
 <GridPane fx:id="grid" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" 
@@ -35,22 +36,22 @@ alignment="CENTER" gridLinesVisible="true" GridPane.hgrow="always" GridPane.vgro
        </ScrollPane>
     </VBox> 
     <Button fx:id="toggleBtn" maxWidth="10" onAction="#toggleSearch" GridPane.columnIndex="1" GridPane.rowIndex="0" GridPane.columnSpan="1" >&lt;</Button>
-    <VBox fx:id="vbox2" prefWidth="${grid.width/2}" GridPane.columnIndex="2" GridPane.rowIndex="0" GridPane.columnSpan="1" spacing="10" alignment="BASELINE_CENTER">
+    <VBox fx:id="vbox2" prefWidth="${grid.width/2}" GridPane.columnIndex="2" GridPane.rowIndex="0" GridPane.columnSpan="1" spacing="20" alignment="BASELINE_CENTER">
        <HBox fx:id="search" alignment="BASELINE_CENTER" maxWidth="Infinity" spacing="5">
        	<TextField fx:id="searchTerm" promptText="Whatcha lookin' for?" maxWidth="Infinity" HBox.hgrow="ALWAYS"/>
        	<fx:define>
        		<Image fx:id="searchIcon" url="@media/searcharrow.png" requestedHeight="30" requestedWidth="30"/>
        	</fx:define>
-       	<Button fx:id="searchBtn" onAction="#printOutput" >
+       	<Button fx:id="searchBtn" onAction="#search" >
        		<graphic>
        			<ImageView image="$searchIcon" preserveRatio="true"/>
        		</graphic>
        	</Button>
        </HBox>
        <FlowPane fx:id="searchTerms" hgap="5" vgap="3" >
-       	<Button fx:id="searchTag" onAction="#printOutput" >Title</Button>
-       	<Button fx:id="searchTag" onAction="#printOutput" >Note</Button>
-       	<Button fx:id="searchTag" onAction="#printOutput" >Tag</Button>
+       	<ToggleButton fx:id="searchTitle" >Title</ToggleButton>
+       	<ToggleButton fx:id="searchNote" >Note</ToggleButton>
+       	<ToggleButton fx:id="searchTag" >Tag</ToggleButton>
        </FlowPane>
     </VBox>
     </children>

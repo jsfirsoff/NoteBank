@@ -3,6 +3,7 @@ package notebank.controller;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.util.ArrayList;
 
 import javafx.animation.ParallelTransition;
 import javafx.animation.TranslateTransition;
@@ -14,6 +15,7 @@ import javafx.scene.control.ContentDisplay;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.scene.control.ToggleButton;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
@@ -21,6 +23,7 @@ import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
 import javafx.util.Duration;
+import notebank.model.Note;
 
 public class Controller {
 
@@ -46,7 +49,7 @@ public class Controller {
     private VBox vbox2;
     
     @FXML
-    private Button searchTag;
+    private ToggleButton searchTag, searchTitle, searchNote;
   
     private final double SEARCH_MENU_COLLAPSED = 1000;
     
@@ -59,9 +62,26 @@ public class Controller {
     }
      
     @FXML
-    private void printOutput() 
+    private void search() 
     {
         System.out.println("Sup");
+        
+        ArrayList<Note> searchResults = new ArrayList<Note>();
+        
+        if (searchTag.isSelected()) {
+        	//get search results
+        }
+        
+        if (searchTitle.isSelected()) {
+        	//get search results
+        }
+        
+        if (searchNote.isSelected()) {
+        	//get search results
+        }
+        
+        //return results
+        
     }
     
     @FXML
@@ -167,10 +187,5 @@ public class Controller {
     	});
     	
     	return button;
-    }
-    
-    private void selectSearchTag() {
-    	//change colour and set search terms
-    	//separate search controller
     }
 }
