@@ -7,12 +7,15 @@ import java.util.ArrayList;
 
 import javafx.animation.ParallelTransition;
 import javafx.animation.TranslateTransition;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.ContentDisplay;
 import javafx.scene.control.Label;
+import javafx.scene.control.ListView;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleButton;
@@ -24,6 +27,7 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
 import javafx.util.Duration;
 import notebank.model.Note;
+import notebank.tools.SearchUtility;
 
 public class Controller {
 
@@ -50,12 +54,17 @@ public class Controller {
     
     @FXML
     private ToggleButton searchTag, searchTitle, searchNote;
+    
+    @FXML
+    private ListView<Note> searchResults;
   
     private final double SEARCH_MENU_COLLAPSED = 1000;
     
     private final double SEARCH_MENU_EXPANDED = 0;
     
     private String exitIconPath = "/src/notebank/view/media/exit3.png";
+    
+    private SearchUtility sUtil = new SearchUtility();
 
     public void initialize() {
     	toggleSearchMenu(SEARCH_MENU_COLLAPSED);
@@ -63,39 +72,36 @@ public class Controller {
      
     @FXML
     private void search() 
-    {
-        System.out.println("Sup");
+    {  
+        ArrayList<Note> results = new ArrayList<Note>();
         
-        ArrayList<Note> searchResults = new ArrayList<Note>();
         
         if (searchTag.isSelected()) {
         	//get search results
+        	System.out.println("Tag selected");
         }
         
         if (searchTitle.isSelected()) {
         	//get search results
+        	System.out.println("Title selected");
         }
         
         if (searchNote.isSelected()) {
         	//get search results
+        	System.out.println("Note selected");
         }
         
         //return results
+       
+        
+        ObservableList<Note> resultList = FXCollections.observableArrayList(results);
+        if (!resultList.isEmpty()) searchResults.setItems(resultList);
         
     }
     
     @FXML
     private void toggleSearch(ActionEvent event) 
     {
-        toggleSearchIcon();
-        
-        
-        
-        //refactor
-    }
-    
-    private void toggleSearchIcon() {
-    	
     	String btntext = toggleBtn.getText();
         
         if (btntext.equals("<")) {
@@ -107,7 +113,7 @@ public class Controller {
         	toggleSearchMenu(SEARCH_MENU_COLLAPSED); //refactor this out
         }
     }
-    
+
     //do this better?
     private void toggleSearchMenu(double position) {
     	TranslateTransition translate = new TranslateTransition(Duration.millis(500), vbox2);  
